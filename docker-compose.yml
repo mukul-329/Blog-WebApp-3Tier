@@ -19,7 +19,7 @@ services:
 
  database:
   image: mongo
-  container_name: blog-datadb
+  container_name: blog-db
   volumes:
    - ./blog-db/db:/data/db
    - ./blog-db/configdb:/data/configdb
