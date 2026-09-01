@@ -22,7 +22,7 @@ services:
    - database
 
  database:
-  image: mongo
+  image: mongo:7.0
   container_name: blog-db
   volumes:
    - ./blog-db/db:/data/db

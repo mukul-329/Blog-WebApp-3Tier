@@ -2,6 +2,9 @@ sudo apt update
 sudo apt install docker.io
 newgrp docker
 sudo usermod -aG docker $USER
+docker run hello-world
+docker login
+docker login dhi.io
 git clone https://github.com/mukul-329/Blog-WebApp-3Tier
 cd Blog-WebApp-3Tier
 cd backend
