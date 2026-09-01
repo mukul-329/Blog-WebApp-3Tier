@@ -7,18 +7,3 @@
 Dockerfile text eol=lf
 *.sh text eol=lf
 
-# Keep Windows command scripts usable when they are added later.
-*.bat text eol=crlf
-*.cmd text eol=crlf
-
-# Never subject binary assets to text normalization.
-*.png binary
-*.jpg binary
-*.jpeg binary
-*.gif binary
-*.webp binary
-*.ico binary
-*.pdf binary
-*.woff binary
-*.woff2 binary
-*.ttf binary
