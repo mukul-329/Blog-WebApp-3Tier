@@ -13,14 +13,15 @@ const app = express();
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 
-// Correcting the CORS origin to allow the entire domain, not just a specific path
-// The React development server runs at http://localhost:3000. Keep the origin
-// configurable so a different local frontend port can be used too.
-app.use(cors({
-  origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000',
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+// The production browser talks to Nginx on the same origin. CORS is only needed
+// when deliberately enabling a separate development frontend through CLIENT_ORIGIN.
+if (process.env.CLIENT_ORIGIN) {
+  app.use(cors({
+    origin: process.env.CLIENT_ORIGIN,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
+}
 
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);

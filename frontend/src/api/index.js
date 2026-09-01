@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const url = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'
+// Requests stay on the frontend origin and are forwarded by Nginx to the API.
+const url = '/api'
 
 const API = axios.create({ baseURL: url })
 
@@ -22,7 +23,7 @@ export const createPost = (newPost) => API.post(`/posts`, newPost)
 
 export const getPostsBySearch = (searchQuery, page) =>
   API.get(
-    `posts/search?searchQuery=${searchQuery.title || 'none'}&tags=${
+    `/posts/search?searchQuery=${searchQuery.title || 'none'}&tags=${
       searchQuery.tags
     }&limit=6&page=${page}`
   )

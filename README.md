@@ -28,6 +28,12 @@ Watch a demo video showcasing the working functionality of Blogify: [Watch Demo]
   - **public/**: Static files like images, fonts, etc.
   - **src/**: Main source code for the front-end, including components, hooks, and utilities.
 
+## System Design
+
+![Blogify system design](assets/system-design.png)
+
+Only the frontend publishes `3000:80`. Nginx forwards browser requests from `/api/*` to the backend over the internal Docker network; backend port `5000` and MongoDB are not exposed publicly.
+
 ## 🛠️ Features
 
 - **Create Blog Posts**: Authenticated users can create new blog posts with a title, content, and optional images.

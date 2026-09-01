@@ -3,31 +3,29 @@ services:
   build:
    context: ./frontend
   container_name: blog-ui
-  ports: 
+  ports:
    - 3000:80
   networks:
    - blog-network
-  env_file: 
-   -  ./frontend/.env
 
  backend:
-  build: 
+  build:
    context: ./backend
-  container_name: blog-backend
+  container_name: blog-bck
   env_file:
    - ./backend/.env
   networks:
    - blog-network
 
- database: 
+ database:
   image: mongo
   container_name: blog-datadb
   volumes:
    - ./blog-db/db:/data/db
    - ./blog-db/configdb:/data/configdb
   networks:
-   - blog-network 
-  
+   - blog-network
 
-networks: 
- blog-network:  
+
+networks:
+ blog-network:

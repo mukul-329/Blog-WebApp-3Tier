@@ -5,6 +5,6 @@ RUN npm ci
 
 FROM dhi.io/node:26 AS runner
 COPY . .
-COPY --from=build /app/node_modules ./node-modules
+COPY --from=build /app/node_modules ./node_modules
 EXPOSE 5000
 CMD ["node","index.js"]
