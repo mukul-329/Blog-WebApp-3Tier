@@ -5,7 +5,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM nginx AS runner
+FROM nginx:alpine AS runner
 WORKDIR /app
 # COPY package.json package-lock.json ./
 # COPY --from=build /app/node_modules ./node_modules
