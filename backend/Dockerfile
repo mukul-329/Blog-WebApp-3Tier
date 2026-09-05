@@ -4,6 +4,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 FROM dhi.io/node:26 AS runner
+WORKDIR /app
 COPY . .
 COPY --from=build /app/node_modules ./node_modules
 EXPOSE 5000
